@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mediceene - AI Health Consultant</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+      body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #f4f9ff;
+        color: #333;
+      }
+
+      .navbar {
+        background: linear-gradient(to right, #007bff, #0056b3);
+      }
+
+      .navbar-brand, .nav-link {
+        color: #fff !important;
+        font-weight: bold;
+      }
+
+      .hero-section {
+        background: url('/static/medical-bg.jpg') no-repeat center center/cover;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .container-glass {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 0 30px rgba(0, 123, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .container-glass:hover {
+        transform: scale(1.01);
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
+      footer {
+        background-color: #007bff;
+        color: #fff;
+        padding: 40px 0;
+      }
+
+      .card {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .results-section {
+        background-color: #e9f4fb;
+        padding: 40px;
+        border-radius: 16px;
+      }
+
+      .section-title {
+        font-weight: 700;
+        color: #0056b3;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .hero-box {
+      /* background-color: rgba(255, 255, 255, 0.15); Light glass effect */
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+       border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      }
+      .hero-section {
+        background: url('/static/medical-bg.jpg') no-repeat center center/cover;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        z-index: 1;
+      }
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: rgba(0, 0, 0, 0.4); */
+        z-index: -1;
+      }
+      .btn-outline-secondary:hover {
+        background-color: #007bff;
+        color: white;
+      }
+      </style>
+  </head>
+  position: relative;
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow">
+      <div class="container">
+        <a class="navbar-brand" href="/">MEDICEENE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            {% if user %}
+              <li class="nav-item"><span class="nav-link">Welcome, {{ session.user }}</span></li>
+              <li class="nav-item"><a class="btn btn-light" href="/logout">Logout</a></li>
+            {% else %}
+              <li class="nav-item"><a class="btn btn-light me-2" href="/login">Login</a></li>
+              <li class="nav-item"><a class="btn btn-outline-light" href="/signup">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="container mt-3">
+          {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+    <div class="container">
+    <div class="hero-box mx-auto p-4">
+      <h1 class="display-4 fw-bold">Your AI Health Partner</h1>
+      <p class="lead">Describe your symptoms and get AI-based health insights in seconds.</p>
+      <a href="#predict-form" class="btn btn-lg btn-light mt-3">Consult Now</a>
+    </div>
+    </div>
+    </section>
+
+
+    
+
+    <!-- AI Consultation Form -->
+    <section id="predict-form" class="section">
+      <div class="container">
+        <div class="container-glass">
+          <h2 class="text-center mb-4">Get Your Diagnosis</h2>
+          <form action="/predict" method="post">
+            <div class="mb-3 position-relative">
+              <label for="symptoms" class="form-label">Enter your symptoms (comma separated)</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="symptoms" name="symptoms" placeholder="e.g. fever, cough">
+                <button class="btn btn-outline-secondary" type="button" onclick="startListening()" title="Speak symptoms">
+                <i class="bi bi-mic-fill"></i>
+                </button>
+              </div>
+              <small class="text-muted">Click the mic and speak your symptoms like "fever, headache, cough"</small>
+            </div>
+            <div class="text-center">
+            <button type="submit" class="btn btn-primary">Diagnose</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    {% if predicted_disease %}
+    <section id="results" class="section results-section">
+      <div class="container">
+        <h2 class="section-title">Diagnosis Results</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card p-3">
+              <h5 class="text-primary">Predicted Disease</h5>
+              <p class="fw-bold">{{ predicted_disease }}</p>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card p-3">
+              <h5 class="text-success">Description</h5>
+              <p>{{ dis_des }}</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h5 class="text-warning">Precautions</h5>
+              <ul>
+                {% for item in my_precautions %}<li>{{ item }}</li>{% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h5 class="text-danger">Medications</h5>
+              <ul>
+                {% for item in medications %}<li>{{ item }}</li>{% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h5 class="text-dark">Workouts</h5>
+              <ul>
+                {% for item in workout %}<li>{{ item }}</li>{% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h5 class="text-secondary">Recommended Diet</h5>
+              <ul>
+                {% for item in my_diet %}<li>{{ item }}</li>{% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-1">&copy; 2025 Mediceene. All rights reserved.</p>
+        <small>AI-driven medical insights. Not a replacement for professional advice.</small>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    {% if predicted_disease %}
+<script>
+  window.onload = function() {
+    const resultSection = document.getElementById("results");
+    if (resultSection) {
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
+{% endif %}
+<script>
+  function startListening() {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Speech recognition not supported in this browser. Please use Chrome.");
+      return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = function () {
+      console.log("Voice recognition started. Speak...");
+    };
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById("symptoms").value = transcript;
+    };
+
+    recognition.onerror = function (event) {
+      alert("Error occurred in recognition: " + event.error);
+    };
+
+    recognition.start();
+  }
+</script>
+
+  </body>
+</html>
