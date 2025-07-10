@@ -1,0 +1,307 @@
+/* use this in case of original css(style tag) didn't work. */
+/* whole css combined */
+/* index.html css */
+body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #f4f9ff;
+        color: #333;
+      }
+
+      .navbar {
+        background: linear-gradient(to right, #007bff, #0056b3);
+      }
+
+      .navbar-brand, .nav-link {
+        color: #fff !important;
+        font-weight: bold;
+      }
+
+      .hero-section {
+        background: url('/static/medical-bg.jpg') no-repeat center center/cover;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .container-glass {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 0 30px rgba(0, 123, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .container-glass:hover {
+        transform: scale(1.01);
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
+      footer {
+        background-color: #007bff;
+        color: #fff;
+        padding: 40px 0;
+      }
+
+      .card {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .results-section {
+        background-color: #e9f4fb;
+        padding: 40px;
+        border-radius: 16px;
+      }
+
+      .section-title {
+        font-weight: 700;
+        color: #0056b3;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .hero-box {
+      /* background-color: rgba(255, 255, 255, 0.15); Light glass effect */
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+       border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      }
+      .hero-section {
+        background: url('/static/medical-bg.jpg') no-repeat center center/cover;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        z-index: 1;
+      }
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: rgba(0, 0, 0, 0.4); */
+        z-index: -1;
+      }
+      .btn-outline-secondary:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+ /* about.html css*/
+ body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #eaf6ff, #f4faff);
+      color: #333;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #007bff, #0056b3);
+    }
+
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: bold;
+    }
+
+    .container-glass {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-glass:hover {
+      transform: scale(1.01);
+    }
+
+    h3 {
+      color: #007bff;
+      margin-top: 30px;
+      font-weight: 700;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    footer {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+/* blog.html css */
+body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #eaf6ff, #f4faff);
+      color: #333;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #007bff, #0056b3);
+    }
+
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: bold;
+    }
+
+    .container-glass {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.1);
+      margin-top: 40px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-glass:hover {
+      transform: scale(1.01);
+    }
+
+    h2, h3 {
+      color: #007bff;
+      font-weight: 700;
+      margin-top: 30px;
+    }
+
+    p, li {
+      line-height: 1.7;
+    }
+
+    footer {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+/* contact.html css */
+body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #eaf6ff, #f4faff);
+      color: #333;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #007bff, #0056b3);
+    }
+
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: bold;
+    }
+
+    .container-glass {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.1);
+      margin-top: 40px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-glass:hover {
+      transform: scale(1.01);
+    }
+
+    h4 {
+      color: #007bff;
+      font-weight: 700;
+      margin-top: 30px;
+    }
+
+    footer {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    /* login.html css */
+body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .login-box h2 {
+      color: #0056b3;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      width: 100%;
+    }
+    .text-muted a {
+      text-decoration: none;
+      color: #0056b3;
+    }
+
+    /*  signup.html css */
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signup-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .signup-box h2 {
+      color: #0056b3;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .btn-success {
+      width: 100%;
+    }
+    .text-muted a {
+      text-decoration: none;
+      color: #0056b3;
+    }
